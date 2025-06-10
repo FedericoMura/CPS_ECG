@@ -61,7 +61,7 @@ The project utilizes the Jupyter Notebook environment on the Pynq Z1 board.
     * Configuring SPI communication with the Nucleo.
     * Managing data transfers via DMA (200-word buffer, 32-bit words).
     * Invoking the hardware IP for filters (pre-configured) for ECG signal processing.
-    * [cite_start]Implementing the Pan & Tompkins algorithm  for R-peak detection.
+    * Implementing the Pan & Tompkins algorithm  for R-peak detection.
     * Calculating Heart Rate and Heart Rate Variability (HRV) based on R-R intervals.
 
 ## 6. Output and Interpretation
@@ -72,7 +72,7 @@ Once the script is running, you will observe the following outputs:
 * **Heartbeat Graph:** A real-time graph of the ECG signal will be displayed, showing the R-peaks identified by the Pan & Tompkins algorithm.
 * **HRV Values:** Calculated Heart Rate Variability (HRV) values will be displayed. These values can be interpreted to assess the state of the autonomic nervous system.
 
-[cite_start]The algorithm has been validated with data containing significant noise and various heart rates, demonstrating its efficacy.
+The algorithm has been validated with data containing significant noise and various heart rates, demonstrating its efficacy.
 
 ## 7. Troubleshooting
 
