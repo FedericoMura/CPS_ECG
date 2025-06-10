@@ -4,7 +4,7 @@ This project implements a real-time Electrocardiogram (ECG) and Heart Rate Varia
 
 ## 1. Introduction
 
-This system is designed to acquire ECG data from a subject, apply advanced filtering and analysis techniques, and provide real-time information about heart rate and its variability. [cite_start]The Pan & Tompkins algorithm  is utilized for R-peak detection, which are subsequently used for heart rate and HRV calculations. [cite_start]The system has been validated using publicly available patient data  [cite_start]and has demonstrated good efficacy.
+This system is designed to acquire ECG data from a subject, apply advanced filtering and analysis techniques, and provide real-time information about heart rate and its variability. The Pan & Tompkins algorithm  is utilized for R-peak detection, which are subsequently used for heart rate and HRV calculations. The system has been validated using publicly available patient data and has demonstrated good efficacy.
 
 ## 2. Hardware Components Required
 
