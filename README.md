@@ -68,8 +68,7 @@ Steps:
 
 3. Go to `File → Open Projects from File System…`, browse to the folder containing the `ECG.ioc` file, and import the project into your workspace.
 
-4. If STM32CubeIDE does not recognize your board configuration:
-   * Click `GENERATE CODE` to initialize the project structure.
+4. Click `GENERATE CODE` to initialize the project structure.
    * This step will create the full folder structure under `/Core`, including `main.c`.
 
 5. Replace the generated file `Core/Src/main.c` with the provided version from this repository, which contains the logic for ECG acquisition and SPI communication.
