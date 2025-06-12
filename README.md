@@ -1,6 +1,6 @@
 # ECG and HRV Real-time Monitoring System on Pynq Z1
 
-This project implements a real-time Electrocardiogram (ECG) and Heart Rate Variability (HRV) monitoring system using a Pynq Z1 board, an STM32 Nucleo-64 board, and an AD8232 ECG sensor. The primary goal is to acquire ECG signals, process noise, identify R-peaks, and calculate heart rate and HRV.
+This project implements a real-time Electrocardiogram (ECG) and Heart Rate (HR) monitoring system using a Pynq Z1 board, an STM32 Nucleo-64 board, and an AD8232 ECG sensor. The primary goal is to acquire ECG signals, process noise, identify R-peaks, and calculate heart rate.
 
 ## 1. Introduction
 
