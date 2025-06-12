@@ -1,10 +1,10 @@
-# ECG and HRV Real-time Monitoring System on Pynq Z1
+# ECG Real-time Monitoring System on Pynq Z1
 
 This project implements a real-time Electrocardiogram (ECG) and Heart Rate (HR) monitoring system using a Pynq Z1 board, an STM32 Nucleo-64 board, and an AD8232 ECG sensor. The primary goal is to acquire ECG signals, process noise, identify R-peaks, and calculate heart rate.
 
 ## 1. Introduction
 
-This system is designed to acquire ECG data from a subject, apply advanced filtering and analysis techniques, and provide real-time information about heart rate and its variability. The Pan & Tompkins algorithm is utilized for R-peak detection, which are subsequently used for heart rate and HRV calculations. The system has been validated using publicly available patient data and has demonstrated good efficacy.
+This system is designed to acquire ECG data from a subject, apply advanced filtering and analysis techniques, and provide real-time information about heart rate and its variability. The Pan & Tompkins algorithm is utilized for R-peak detection, which are subsequently used for heart rate calculations. The system has been validated using publicly available patient data and has demonstrated good efficacy.
 
 ## 2. Hardware Components Required
 
@@ -121,7 +121,7 @@ Steps:
    * Manage DMA transfers (200-word buffer, 32-bit words).
    * Invoke hardware IP for ECG filtering.
    * Run the Pan & Tompkins algorithm for R-peak detection.
-   * Calculate heart rate and HRV based on R-R intervals.
+   * Calculate heart rate based on R-R intervals.
 
 ## 6. Output and Interpretation
 
@@ -129,7 +129,6 @@ Once running, the following outputs will be observed:
 
 * Heart Rate (LED): An onboard LED will flash based on the detected heart rate.
 * Heartbeat Graph: A real-time ECG graph showing detected R-peaks.
-* HRV Values: Computed heart rate variability metrics, useful to assess autonomic nervous system status.
 
 The system has been tested with noisy and varied heart rate data and has shown good performance.
 
