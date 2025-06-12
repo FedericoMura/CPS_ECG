@@ -19,6 +19,18 @@ To use this project, you will need the following components:
 
 ## 3. Hardware Setup
 
+### 3.1. STM32 Nucleo-64 Pin Mapping
+
+The following pins on the STM32 Nucleo-64 board are used:
+
+* ECG Analog Input (AD8232 OUT) → `PA0` (`ADC_IN`)
+* SPI NSS (Slave Select) → `PA4`
+* SPI SCK (Clock) → `PA5`
+* SPI MISO (Master In Slave Out) → `PA6`
+* SPI MOSI (Master Out Slave In) → `PA7`
+
+Ensure that the ECG signal from the AD8232 sensor is connected to pin `PA0`, and that the SPI connections between the Nucleo and Pynq match the pin assignments above.
+
 Follow these steps to connect the hardware components:
 
 1. Connecting AD8232 Sensor to STM32 Nucleo-64:
