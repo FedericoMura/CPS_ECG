@@ -23,7 +23,7 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
     // Read ecg sample
     uint32_t adc_value = HAL_ADC_GetValue(&hadc1);
 
-    // Troncamento a 16 bit per compatibilit‡ SPI (ok: Ë 12 bit)
+    // Troncamento a 16 bit per compatibilit√† SPI (ok: √® 12 bit)
     spi_tx_value = (int16_t)adc_value;
 	spi_tx_value = (spi_tx_value-2405)/4;
     // Send data to PYNQ
