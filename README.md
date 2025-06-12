@@ -45,25 +45,49 @@ The project involves firmware for the Nucleo-64 and a Jupyter Notebook for the P
 1.  **Nucleo-64 Firmware Upload:**
     * Locate the C firmware file for the STM32 Nucleo-64 in this repository (e.g., `nucleo_firmware.c` or similar).
     * Connect your STM32 Nucleo-64 board to your computer using a USB mini-B cable.
-    * **Option A: ST Software:** Use the STMicroelectronics software tools (e.g., STM32CubeIDE, STM32CubeProgrammer) to compile and upload the C firmware to the Nucleo-64 board.
-    * **Option B: PlatformIO:** If you prefer, you can use PlatformIO (with VS Code or standalone) to compile and upload the firmware. Ensure your `platformio.ini` is correctly configured for your Nucleo-64 board.
+    1.1. **Creating the STM32 Nucleo-64 Project with STM32CubeIDE:**
 
-2.  **MicroSD Card Preparation (for Pynq):**
-    * Ensure your MicroSD card contains the Pynq operating system image.
-    * Insert the MicroSD card into the dedicated slot on the Pynq Z1.
-
-3.  **Upload Pynq Overlay Files:**
-    * Before running the Jupyter Notebook, you need to upload the hardware overlay files to your Pynq board. These files (`.bit` and `.hwh`) define the custom hardware accelerators (like your filters) on the FPGA.
-    * Transfer these files from this repository (or your development environment) to the Pynq board. You can typically do this using SCP, SFTP, or by directly copying them to the MicroSD card. Place them in the same directory as your Jupyter Notebook.
-
-4.  **Accessing Jupyter Notebook:**
-    * Connect the Pynq Z1 to your network (via Ethernet or Wi-Fi, if configured).
-    * Power on the Pynq Z1.
-    * Open a web browser on your computer and navigate to the IP address of your Pynq Z1 (usually `192.168.2.1` if connected directly to your computer, otherwise check the IP address assigned by your network).
-    * Log in to the Jupyter Notebook interface.
-
-5.  **Project Upload (Jupyter Notebook):**
-    * Upload your Jupyter Notebook file (`.ipynb`) containing the project's Python script to the Jupyter working directory on the Pynq.
+   To run the firmware on the Nucleo, you must import and build the project provided as a `.ioc` file (named `ECG.ioc`) using STM32CubeIDE.
+   
+   * **Install STM32CubeIDE** from the official STMicroelectronics website:  
+     https://www.st.com/en/development-tools/stm32cubeide.html
+   
+   * **Open STM32CubeIDE** and import the project:
+     * Go to `File → Open Projects from File System…`
+     * Browse to the folder containing the `ECG.iop` file.
+     * Select and import the project into your workspace.
+   
+   * **Build the firmware**:
+     * Click the hammer icon to compile the project.
+     * Ensure that the ADC is configured to sample the ECG signal at 200 Hz.
+     * Ensure that the SPI interface is set to **Slave mode** with 16-bit data size and DMA enabled.
+   
+   * **Flash the firmware to the board**:
+     * Connect the Nucleo-64 to your computer using a USB mini-B cable.
+     * Click the green debug arrow (`Run → Debug As → STM32 Cortex-M C/C++ Application`) to program the board.
+   
+   * Once flashed, the Nucleo will:
+     * Continuously acquire analog ECG data from the AD8232 sensor.
+     * Sample at 200 Hz and transmit 16-bit words via SPI to the Pynq Z1 board.
+   
+   > *Note:* The firmware source is fully editable.
+   
+   2.  **MicroSD Card Preparation (for Pynq):**
+       * Ensure your MicroSD card contains the Pynq operating system image.
+       * Insert the MicroSD card into the dedicated slot on the Pynq Z1.
+   
+   3.  **Upload Pynq Overlay Files:**
+       * Before running the Jupyter Notebook, you need to upload the hardware overlay files to your Pynq board. These files (`.bit` and `.hwh`) define the custom hardware accelerators (like your filters) on the FPGA.
+       * Transfer these files from this repository (or your development environment) to the Pynq board. You can typically do this using SCP, SFTP, or by directly copying them to the MicroSD card. Place them in the same directory as your Jupyter Notebook.
+   
+   4.  **Accessing Jupyter Notebook:**
+       * Connect the Pynq Z1 to your network (via Ethernet or Wi-Fi, if configured).
+       * Power on the Pynq Z1.
+       * Open a web browser on your computer and navigate to the IP address of your Pynq Z1 (usually `192.168.2.1` if connected directly to your computer, otherwise check the IP address assigned by your network).
+       * Log in to the Jupyter Notebook interface.
+   
+   5.  **Project Upload (Jupyter Notebook):**
+       * Upload your Jupyter Notebook file (`.ipynb`) containing the project's Python script to the Jupyter working directory on the Pynq.
 
 ## 5. Running the Project
 
