@@ -74,6 +74,13 @@ Steps:
 
 5. Replace the generated file `Core/Src/main.c` with the provided version from this repository, which contains the logic for ECG acquisition and SPI communication.
 
+   If you do not have the ECG sensor available, you can still simulate the signal:
+   - Download the file `ecg_data.h` and place it in the `Core/Inc` directory.
+   - Use the file `main_noadc.c` (also provided) and rename it to `main.c`.
+   - Replace the generated `Core/Src/main.c` with this renamed file.
+   This version of the firmware will transmit pre-recorded ECG data instead of acquiring it from the sensor.
+
+
 6. Build the project by clicking the hammer icon.
 
 7. Connect the Nucleo board to your computer using a USB mini-B cable.
