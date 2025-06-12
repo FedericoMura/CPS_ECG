@@ -42,10 +42,10 @@ Follow these steps to connect the hardware components:
    * Identify the SPI pins (MOSI, MISO, SCLK, NSS) on your STM32 Nucleo-64 board.
    * Identify the corresponding SPI pins on the Pynq Z1 board.
    * Connect the Nucleo's SPI pins to the Pynq:
-     * Nucleo MOSI → Pynq MISO
-     * Nucleo MISO → Pynq MOSI
+     * Nucleo MISO → Pynq MISO
+     * Nucleo MOSI → Pynq MOSI
      * Nucleo SCLK → Pynq SCLK
-     * Nucleo NSS (Slave Select) → Pynq GPIO (any GPIO pin configured as chip select)
+     * Nucleo NSS (Slave Select) → Pynq NSS
    * Ensure that the grounds (GND) of both boards are connected.
 
 Note: The Pynq will act as the SPI master, and the Nucleo as the slave. Data transfers will be serial 16-bit. The sensor sampling rate is 200 Hz.
@@ -74,19 +74,14 @@ Steps:
 
 5. Replace the generated file `Core/Src/main.c` with the provided version from this repository, which contains the logic for ECG acquisition and SPI communication.
 
-6. Verify the peripheral configuration:
-   * ADC1 is enabled and connected to the analog input from the AD8232.
-   * SPI1 (or another selected SPI peripheral) is configured in Slave Mode, with 16-bit data size.
-   * DMA is enabled for SPI and/or ADC if needed.
+6. Build the project by clicking the hammer icon.
 
-7. Build the project by clicking the hammer icon.
+7. Connect the Nucleo board to your computer using a USB mini-B cable.
 
-8. Connect the Nucleo board to your computer using a USB mini-B cable.
-
-9. Flash the firmware:
+8. Flash the firmware:
    * Click the green debug arrow or go to `Run → Debug As → STM32 Cortex-M C/C++ Application`.
 
-10. Once flashed, the Nucleo will:
+9. Once flashed, the Nucleo will:
     * Continuously acquire analog ECG data from the AD8232 sensor.
     * Sample the signal at 200 Hz and transmit 16-bit words via SPI to the Pynq Z1.
 
@@ -97,7 +92,7 @@ Steps:
 
 ### 4.3. Upload Pynq Overlay Files
 
-* Before running the Jupyter Notebook, upload the hardware overlay files to your Pynq board. These files (.bit and .hwh) define the custom hardware accelerators (e.g., filters) on the FPGA.
+* Before running the Jupyter Notebook, upload the hardware overlay files to your Pynq board. These files (`ecg_hw.bit` and `ecg_hw.hwh`) define the custom hardware accelerators (e.g., filters) on the FPGA.
 * Transfer these files to the Pynq board using SCP, SFTP, or by copying them directly to the MicroSD card. Place them in the same directory as the Jupyter Notebook.
 
 ### 4.4. Accessing Jupyter Notebook
@@ -109,7 +104,7 @@ Steps:
 
 ### 4.5. Upload Project Notebook
 
-* Upload the Jupyter Notebook file (.ipynb) containing the project’s Python script to the working directory on the Pynq board.
+* Upload the Jupyter Notebook file (`ecg_Notebook.ipynb`) containing the project’s Python script to the working directory on the Pynq board.
 
 ## 5. Running the Project
 
