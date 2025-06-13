@@ -1,0 +1,9 @@
+README – ECG Filter IP Generation
+
+This project includes the necessary files for generating digital filters as FPGA IP cores for real-time ECG signal processing.
+
+- pipeline.mat  
+  Contains the MATLAB/Simulink model used to generate a custom IP core via HDL Coder. This model implements the full ECG filtering pipeline and is optimized for hardware deployment. It can be directly synthesized and integrated into an FPGA design.
+
+- QuantizedSOS.mat  
+  Provides the set of quantized filter coefficients in Second-Order Sections (SOS) format for the IIR filters only. These coefficients are hardware-friendly, compatible with HDL Coder, and ensure numerical stability and accuracy in fixed-point implementations.
