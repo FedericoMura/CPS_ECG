@@ -23,3 +23,13 @@ These coefficients are:
 
 
 This setup supports rapid deployment of ECG filter chains into hardware for embedded signal processing.
+
+### 2.3. `pipeline_ipcore.zip`
+
+This archive contains the fully generated and manually optimized HDL IP core based on the `pipeline.mat` model. It includes:
+
+- Synthesizable VHDL/Verilog source code.
+- IP metadata and constraints.
+- Scripts and files for integration into FPGA design environments.
+
+The IP core has been reviewed and fine-tuned for our application.
