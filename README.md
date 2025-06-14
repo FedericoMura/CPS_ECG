@@ -131,13 +131,21 @@ To create the `.hwh` and Tcl wrapper needed by Pynq, go to **File → Export →
 In the Vivado Tcl console you can script the above:
 
 tcl 
+
 open_project path/to/<project_name>.xpr 
+
 reset_run synth_1 
+
 launch_runs synth_1 -jobs 4 
+
 wait_on_run synth_1 
+
 launch_runs impl_1 -to_step write_bitstream 
+
 wait_on_run impl_1 
+
 write_hw_platform -fixed -include_bit -force path/to/exported_hardware.hwh 
+
 exit
 
 ### 4.5. Accessing Jupyter Notebook
