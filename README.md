@@ -101,14 +101,53 @@ Steps:
 * Before running the Jupyter Notebook, upload the hardware overlay files to your Pynq board. These files (`ecg_hw.bit` and `ecg_hw.hwh`) define the custom hardware accelerators (e.g., filters) on the FPGA.
 * Transfer these files to the Pynq board using SCP, SFTP, or by copying them directly to the MicroSD card. Place them in the same directory as the Jupyter Notebook.
 
-### 4.4. Accessing Jupyter Notebook
+### 4.4 Generating the Bitstream (Vivado 2024.2)
+
+To produce the FPGA bitstream for your Pynq overlay using Vivado 2024.2, follow these steps:
+
+1. **Open the Project**  
+   Launch Vivado 2024.2 and open your hardware project file (`<project_name>.xpr`).
+
+2. **Run Synthesis**  
+   In the Flow Navigator, click **Run Synthesis** and wait until it completes without errors.
+
+3. **Run Implementation**  
+   Select **Run Implementation** in the Flow Navigator. Accept the default strategy and let it finish.
+
+4. **Generate the Bitstream**  
+   Under **Program and Debug**, click **Generate Bitstream**. If Vivado asks to run implementation first, confirm and proceed.
+
+5. **Locate the Output File**  
+   The generated `.bit` file will be in:
+    <project_root>/
+    <project_name>.runs/
+    impl_1/
+    <project_name>.bit
+6. **Export Hardware (Optional)**  
+To create the `.hwh` and Tcl wrapper needed by Pynq, go to **File → Export → Export Hardware…**, check **Include bitstream**, and save the `.xsa` or `.hwh` file.
+
+##### Tcl Automation (optional)
+
+In the Vivado Tcl console you can script the above:
+
+tcl
+open_project path/to/<project_name>.xpr
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
+write_hw_platform -fixed -include_bit -force path/to/exported_hardware.hwh
+exit
+
+### 4.5. Accessing Jupyter Notebook
 
 * Connect the Pynq Z1 to your network (Ethernet or configured Wi-Fi).
 * Power on the board.
 * Open a web browser and go to the Pynq Z1's IP address (typically 192.168.2.1 if connected directly).
 * Log in to the Jupyter Notebook interface.
 
-### 4.5. Upload Project Notebook
+### 4.6. Upload Project Notebook
 
 * Upload the Jupyter Notebook file (`ecg_Notebook.ipynb`) containing the project’s Python script to the working directory on the Pynq board.
 
